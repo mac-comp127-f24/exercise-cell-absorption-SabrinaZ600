@@ -29,7 +29,8 @@ private Random rand = new Random();
             Point canvasCenter = new Point(canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
             Cell cell = cells.get(i);
             cell.moveAround(canvasCenter);
-            cell.grow(0.02); }
+            handleCellInteraction();
+         }
 
             canvas.draw();
             canvas.pause(10);
@@ -52,6 +53,15 @@ private Random rand = new Random();
     }
 }
 
+private void handleCellInteraction() {
+    for (int i = 0; i < cells.size(); i++) {
+        Cell cell0 = cells.get(i);
+        for (int j = i + 1; j < cells.size(); j++) {
+            Cell cell1 = cells.get(j);
+            cell0.interactWith(cell1);
+        }
+    }
+}
    
 
     
